@@ -57,7 +57,7 @@ class Bilanz_OCR:
                 else:
                     if type(self.bilanz.passiva[active_category]) == dict:
                         self.bilanz.passiva[active_category] = 0
-                        
+
                     self.bilanz.passiva[active_category] += self.get_clean_number(scan_money[0])
                 continue
              
@@ -67,6 +67,7 @@ class Bilanz_OCR:
         print(text)  # for testing
         self.bilanz.show()
 
+
 if __name__ == "__main__":
-    ocr = Bilanz_OCR("bilanz_scan.png")
+    ocr = Bilanz_OCR("bilanz_scan.png") # THIS IS THE FILEPATH TO ADJUST
     ocr.computer_use_reading_comprehention()
