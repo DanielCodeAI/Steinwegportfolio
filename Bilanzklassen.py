@@ -24,17 +24,11 @@ class Bilanz:
         print("\n--- AKTIVA ---")
     
         for categorie, value in self.aktiva.items():
-            print(f"{categorie}:")
-            if isinstance(value, dict):
-                for subcategory in value:
-                    print(f"  - {subcategory}")
+            print(f"{categorie}: {value} EUR")
         
         print("\n--- PASSIVA ---")
         for categorie, value in self.passiva.items():
-            print(f"{categorie}:")
-            if isinstance(value, dict):
-                for subcategory in value:
-                    print(f"  - {subcategory}")
+            print(f"{categorie}: {value} EUR")
 
 
 class Strukturbilanz:
