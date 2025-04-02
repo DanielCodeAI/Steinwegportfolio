@@ -37,7 +37,7 @@ class Bilanz_OCR:
                 continue
 
             scan_money = re.findall(r"\s+(\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d+[,]\d+)", line)
-            print(scan_money)
+            print(f"In line: {line}\nWe have category: {active category}\nMoney found: {scan_money}")
             if scan_money:
                 if active_category in ["Anlagevermögen", "Umlaufvermögen"]: # Aktiva go in the Aktiva UwU
                     self.bilanz.aktiva[active_category] += self.get_clean_number(scan_money[0])
