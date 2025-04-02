@@ -54,5 +54,5 @@ class Bilanz_OCR:
 
 
 if __name__ == "__main__":
-    ocr = Bilanz_OCR("Bilanz_Weilberg.png") # THIS IS THE FILEPATH TO ADJUST
+    ocr = Bilanz_OCR("Eschborn_sharp.png") # THIS IS THE FILEPATH TO ADJUST
     ocr.computer_use_reading_comprehention()
