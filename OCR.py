@@ -65,8 +65,9 @@ class Bilanz_OCR:
         text = self.extract_text()
         self.parse_text(text)
         print(text)  # for testing
-        self.bilanz.show()
+        print(self.bilanz.aktiva)
+        print(self.bilanz.passiva)
 
 if __name__ == "__main__":
-    ocr = Bilanz_OCR("bilanz_scan.png")
+    ocr = Bilanz_OCR("Bilanz_Weilberg.png")
     ocr.computer_use_reading_comprehention()
