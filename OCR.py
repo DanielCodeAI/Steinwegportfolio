@@ -18,7 +18,7 @@ class Bilanz_OCR:
     def extract_text(self):
         processed_img = self.preprocess_image()
 
-        custom_config = "--oem 3 "  # LSTM OCR Engine mit semi-automatischem Layout-Parsing (schlechter
+        custom_config = "--oem 3 --psm 6"  # LSTM OCR Engine mit semi-automatischem Layout-Parsing (schlechter
         text = pytesseract.image_to_string(processed_img, lang="deu",config=custom_config)  # <- dark magic
         return text
     
