@@ -33,3 +33,4 @@ class KPIs:  # I'm a lazy bum, used GPT for this, cause no Brian for searching p
 if __name__ == "__main__":
    # kpi = KPIs(strukturbilanz)
    # kpi.anzeigen()
+   pass
