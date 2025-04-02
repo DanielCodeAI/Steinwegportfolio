@@ -22,21 +22,11 @@ class Bilanz_OCR:
         text = pytesseract.image_to_string(processed_img, lang="deu",config=custom_config)  # <- dark magic
         return text
     
-    def get_clean_number(self,x: str)->float:
-        is_german = False
-
-        for i in range(len(x)-1, 0, -1):
-            if x[i] == ",":
-                is_german = True
-                break
-            elif x[i] == ".":
-                break
-
-        if is_german:
-            x_clean = x.replace(".", "").replace(",", ".")
-            return float(x_clean)
-        else:
-            return float(x.replace(",", ""))
+    def get_clean_number(self, x: str)->float:
+        xclean = x.replace(".", "")
+        xclean = xclean.replace(",", "")
+        x_floatable = xclean[:-2] + "." + xclean[-2:]
+        return float(x_floatable)
         
     def parse_text(self, text):
         active_category= ''
