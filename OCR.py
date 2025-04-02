@@ -63,8 +63,8 @@ class Bilanz_OCR:
              
     def computer_use_reading_comprehention(self):
         text = self.extract_text()
-        self.parse_text(text)
         print(text)  # for testing
+        self.parse_text(text)
         print(self.bilanz.aktiva)
         print(self.bilanz.passiva)
 
