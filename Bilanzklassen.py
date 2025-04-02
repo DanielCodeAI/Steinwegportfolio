@@ -1,23 +1,15 @@
 class Bilanz:
     def __init__(self):  # GPT nach Inhalten gefragt, muss bestimmt noch angepasst werden
         self.aktiva = {
-            "Anlagevermögen": {
-             
-            },
-            "Umlaufvermögen": {
-             
-            },
-            "Rechnungsabgrenzungsposten": None
+            "Anlagevermögen": 0,
+            "Umlaufvermögen": 0,
         }
         
         self.passiva = {
-            "Eigenkapital": {
-       
-            },
-            "Fremdkapital": {
-        
-            },
-            "Rechnungsabgrenzungsposten": None
+            "Eigenkapital": 0,
+            "Rückstellungen": 0,
+            "Verbindlichkeiten": 0,
+            "Rechnungsabgrenzungsposten": 0
         }
     
     def show(self):
