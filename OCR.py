@@ -57,11 +57,12 @@ class Bilanz_OCR:
              
     def computer_use_reading_comprehention(self):
         text = self.extract_text()
-        self.parse_text(text)
         print(text)  # for testing
-        self.bilanz.show()
+        self.parse_text(text)
+        print(self.bilanz.aktiva)
+        print(self.bilanz.passiva)
 
 
 if __name__ == "__main__":
-    ocr = Bilanz_OCR("bilanz_scan.png") # THIS IS THE FILEPATH TO ADJUST
+    ocr = Bilanz_OCR("Bilanz_Weilberg.png") # THIS IS THE FILEPATH TO ADJUST
     ocr.computer_use_reading_comprehention()
