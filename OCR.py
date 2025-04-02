@@ -1,5 +1,5 @@
 import cv2  # process those images
-import pytesseract  # no dyslexia anymore
+import pytesseract  # no dyslexia anymore (except it still has dyslexia)
 import re  # Kakyoin can't comprehent stopped time - if you dont get it, dont sweat it
 import Bilanzklassen # don't forget the class file :3
 
@@ -41,20 +41,23 @@ class Bilanz_OCR:
     def parse_text(self, text):
         active_category= ''
         for line in text.split("\n"):
-            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Rückstellungen|Verbindlichkeiten|Rechnungsabgrenzungsposten", line)  # don't ask me if there are easier ways, stack overflow gave me this
+            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Rückstellungen|Verbindlichkeiten|Rechnungsabgrenzungsposten", line)
             if scan_category:
                 active_category = scan_category[0]
                 continue
 
-            scan_money = re.findall(r"\s+(\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d+[.,]\d+)", line)  # don't ask me if there are easier ways, stack overflow gave me this
+            scan_money = re.findall(r"\s+(\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d+[.,]\d+)", line)
             print(scan_money)
             if scan_money:
-                if type(self.bilanz.aktiva[active_category]) == dict:
-                    self.bilanz.aktiva[active_category] = 0
-                
-                if active_category in ["Anlagevermögen", "Umlaufvermögen"]:
+                if active_category in ["Anlagevermögen", "Umlaufvermögen"]: # Aktiva go in the Aktiva UwU
+                    if type(self.bilanz.aktiva[active_category]) == dict:
+                        self.bilanz.aktiva[active_category] = 0
+
                     self.bilanz.aktiva[active_category] += self.get_clean_number(scan_money[0])
                 else:
+                    if type(self.bilanz.passiva[active_category]) == dict:
+                        self.bilanz.passiva[active_category] = 0
+                        
                     self.bilanz.passiva[active_category] += self.get_clean_number(scan_money[0])
                 continue
              
