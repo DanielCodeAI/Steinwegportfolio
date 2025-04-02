@@ -41,7 +41,7 @@ class Bilanz_OCR:
     def parse_text(self, text):
         active_category= ''
         for line in text.split("\n"):
-            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Langfristiges Fremdkapital|Kurzfristiges Fremdkapital", line)  # don't ask me if there are easier ways, stack overflow gave me this
+            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Rückstellungen|Verbindlichkeiten|Rechnungsabgrenzungsposten", line)  # don't ask me if there are easier ways, stack overflow gave me this
             if scan_category:
                 active_category = scan_category[0]
                 continue
@@ -51,7 +51,11 @@ class Bilanz_OCR:
             if scan_money:
                 if type(self.bilanz.aktiva[active_category]) == dict:
                     self.bilanz.aktiva[active_category] = 0
-                self.bilanz.aktiva[active_category] += self.get_clean_number(scan_money[0])
+                
+                if active_category in ["Anlagevermögen", "Umlaufvermögen"]:
+                    self.bilanz.aktiva[active_category] += self.get_clean_number(scan_money[0])
+                else:
+                    self.bilanz.passiva[active_category] += self.get_clean_number(scan_money[0])
                 continue
              
     def computer_use_reading_comprehention(self):
