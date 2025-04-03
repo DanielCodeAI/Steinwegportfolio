@@ -22,15 +22,26 @@ class Bilanz_OCR:
     def parse_text(self, text):
         active_category= ''
         for line in text.split("\n"):
-            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Rückstellungen|Verbindlichkeiten|Rechnungsabgrenzungsposten", line)
+            scan_category = re.findall(r"Anlagevermögen|Umlaufvermögen|Eigenkapital|Rückstellungen|Verbindlichkeiten|C. Rechnungsabgrenzungsposten|D. Rechnungsabgrenzungsposten", line)
             if scan_category:
                 active_category = scan_category[0]
-                continue
+            
+            skip_line = False
+            # Hiermit ignorieren wir Summenzeilen, welche keinen MEHRWERT haben
+            if (not any(char.isalpha() for char in line)) or ("EUR" in line):
+                skip_line = True
 
             scan_money = re.findall(r"\s+(\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d+[,]\d+)", line)
-            print(f"In line: {line}\nWe have category: {active_category}\nMoney found: {scan_money}\n===============================")
+            
+            print(f"In line: {line}\nWe have category: {active_category}\nMoney found: {scan_money}\nLine skipped: {skip_line}\n===============================")
+
+            if skip_line:
+                if active_category == "D. Rechnungsabgrenzungsposten":
+                    break # Diese Abfrage checkt of das das Ende der Bilanz ist
+                continue
+
             if scan_money:
-                if active_category in ["Anlagevermögen", "Umlaufvermögen"]: # Aktiva go in the Aktiva UwU
+                if active_category in ["Anlagevermögen", "Umlaufvermögen", "C. Rechnungsabgrenzungsposten"]: # Aktiva go in the Aktiva UwU
                     self.bilanz.aktiva[active_category] += self.get_clean_number(scan_money[0])
                 else:
                     self.bilanz.passiva[active_category] += self.get_clean_number(scan_money[0])
