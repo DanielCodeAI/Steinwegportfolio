@@ -4,14 +4,20 @@ import Bilanzklassen # don't forget the class file :3
 
 # this was fun, so I did it myself, no cheating this time (stack overflow is fair game) :O
 class Bilanz_OCR:
-    def __init__(self, pdf_path, pdf_page):
+    def __init__(self, pdf_path:str, pdf_pages:tuple):
         self.pdf_path = pdf_path
-        self.pdf_page = pdf_page
+        self.pdf_pages = pdf_pages
         self.bilanz = Bilanzklassen.Bilanz()
     
     def extract_text(self):
         reader = pypdf.PdfReader(self.pdf_path)
-        return reader.pages[self.pdf_page].extract_text()
+
+        page_texts = []
+
+        for page_num in self.pdf_pages:
+            page_texts.append(reader.pages[page_num].extract_text())
+
+        return "\n".join(page_texts)
     
     def get_clean_number(self, x: str)->float:
         xclean = x.replace(".", "")
@@ -32,7 +38,7 @@ class Bilanz_OCR:
                 skip_line = True
 
             scan_money = re.findall(r"\s+(\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d*[.,]*\d+[,]\d+)", line)
-            
+
             print(f"In line: {line}\nWe have category: {active_category}\nMoney found: {scan_money}\nLine skipped: {skip_line}\n===============================")
 
             if skip_line:
@@ -55,5 +61,5 @@ class Bilanz_OCR:
 
 
 if __name__ == "__main__":
-    ocr = Bilanz_OCR("Suchergebnis-Bundesanzeiger04.pdf", pdf_page=2) # THIS IS THE FILEPATH TO ADJUST
+    ocr = Bilanz_OCR("Suchergebnis-Bundesanzeiger04.pdf", pdf_pages=(2,)) # THIS IS THE FILEPATH TO ADJUST
     ocr.computer_use_reading_comprehention()
