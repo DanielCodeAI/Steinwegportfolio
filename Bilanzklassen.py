@@ -3,13 +3,14 @@ class Bilanz:
         self.aktiva = {
             "Anlagevermögen": 0,
             "Umlaufvermögen": 0,
+            "C. Rechnungsabgrenzungsposten": 0,
         }
         
         self.passiva = {
             "Eigenkapital": 0,
             "Rückstellungen": 0,
             "Verbindlichkeiten": 0,
-            "Rechnungsabgrenzungsposten": 0
+            "D. Rechnungsabgrenzungsposten": 0
         }
     
     def show(self):
