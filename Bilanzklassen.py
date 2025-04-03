@@ -42,10 +42,11 @@ class Strukturbilanz:
         
         self.passiva = {
             "Eigenkapital": bilanz.passiva["a. eigenkapital"],
-            "langfristige Fremdkapital": bilanz.passiva["rückstellungen"] + bilanz.passiva["passive latente steuern"],
-            "kurzfristige Fremdkapital": bilanz.passiva["verbindlichkeiten"] + bilanz.passiva["d. rechnungsabgrenzungsposten"],
+            "langfristiges Fremdkapital": bilanz.passiva["rückstellungen"] + bilanz.passiva["passive latente steuern"],
+            "kurzfristiges Fremdkapital": bilanz.passiva["verbindlichkeiten"] + bilanz.passiva["d. rechnungsabgrenzungsposten"],
         }
     
+        self.gesamtkapital = self.aktiva["langfristig gebundenes Vermögen"] + self.aktiva["kurzfristig gebundenes Vermögen"] + self.aktiva["sonstige Aktiva"]
 
     def show(self):
         print("\n--- STRUKTURBILANZ AKTIVA ---")
