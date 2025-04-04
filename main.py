@@ -20,7 +20,7 @@ strk_blnz_0.show()
 print("\n", balken, "\n\nKennzahlen für Gastro 1\n")
 alle_kennzahlen_auf_einmal(strk_blnz_0)
 
-print("\n", balken, "\n\n")
+print("\n", balken, "\n", balken, "\n\n")
 
 strk_blnz_1 = Bilanzklassen.Strukturbilanz(pdf_1.bilanz)
 print("Strukturbilanz für Gastro 2")
