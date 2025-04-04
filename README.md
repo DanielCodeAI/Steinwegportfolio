@@ -40,3 +40,9 @@ Vollautomatisch erkannt und ausgewertet wird:
         |/\|<__/
 ```
 *- Fox by Quirin*
+
+TODO:
+- "Ampel" für Kennzahlen (Einfach sinnvolle Werte Goglen)
+- Zeitvergleich aka. Jahr in UI einfügen +mehrere PDFs von dem selben Betrieb, aber in anderen Jahren
+- Comparison between two > RPG equipment comparison
+- NICE LOOKING UI - MMMMMMMMM TASTY DASHBOARD
