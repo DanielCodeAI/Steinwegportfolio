@@ -12,6 +12,9 @@ Tim Schacht, Daniel Bonath, Quirin Barth
 
 [`main.py`](main.py) gibt bei Ausführung die Strukturbilanz und mehrere Kennzahlen für zwei verschiedene **Gastro-Unternehmen** aus.
 
+
+*Disclaimer: Der code ist auf Gastrounternehmen angepasst, und funktioniert mit anderen Bilanzen möglicherweise nicht ganz richtig.*
+
 ### Automatisierungsgrad
 Der Code ist so eingerichtet, dass letztenendes nur der Dateipfad des pdfs angegeben werden muss.
 
@@ -29,7 +32,7 @@ Vollautomatisch erkannt und ausgewertet wird:
 - Nettoumlaufvermögen
 
 
-## The fox!
+## The Fox!
 ```
         /\/\    _
        < o  \  /_|
