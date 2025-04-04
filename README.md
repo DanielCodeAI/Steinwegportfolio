@@ -10,7 +10,7 @@ Tim Schacht, Daniel Bonath, Quirin Barth
 
 ## Funktion
 
-`main.py` gibt bei Ausführung die Strukturbilanz und mehrere Kennzahlen für zwei verschiedene **Gastro-Unternehmen** aus.
+[`main.py`](main.py) gibt bei Ausführung die Strukturbilanz und mehrere Kennzahlen für zwei verschiedene **Gastro-Unternehmen** aus.
 
 ### Automatisierungsgrad
 Der Code ist so eingerichtet, dass letztenendes nur der Dateipfad des pdfs angegeben werden muss.
