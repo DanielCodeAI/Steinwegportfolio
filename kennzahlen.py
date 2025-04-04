@@ -53,8 +53,8 @@ def nettoumlaufvermögen(strk_bilanz: Bilanzklassen.Strukturbilanz) -> float:
     return strk_bilanz.aktiva["kurzfristig gebundenes Vermögen"] - strk_bilanz.passiva["kurzfristiges Fremdkapital"]
 
 
-def alle_kennzahlen_auf_einmal(strk_bilanz: Bilanzklassen.Strukturbilanz) -> dict:
-    return {
+def alle_kennzahlen_auf_einmal(strk_bilanz: Bilanzklassen.Strukturbilanz):
+    kennzahlen = {
         "Eigenkapitalquote": eigenkapitalquote(strk_bilanz),
         "Fremdkapitalquote": fremdkapitalquote(strk_bilanz),
         "Verschuldungsgrad": verschuldungsgrad(strk_bilanz),
@@ -64,3 +64,6 @@ def alle_kennzahlen_auf_einmal(strk_bilanz: Bilanzklassen.Strukturbilanz) -> dic
         "Liquiditätsgrad 3": liquiditätsgrad_3(strk_bilanz),
         "Nettoumlaufvermögen": nettoumlaufvermögen(strk_bilanz)
     }
+
+    for key, value in kennzahlen.items():
+        print(f"{key}: {value}")

@@ -77,7 +77,8 @@ class Bilanz_PDF:
         if verbose:
             print(text)  # for testing
         self.parse_text(text, verbose=verbose)
-        self.bilanz.show()
+        if verbose:
+            self.bilanz.show()
 
 
 if __name__ == "__main__":
