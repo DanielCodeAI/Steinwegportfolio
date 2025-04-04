@@ -66,4 +66,4 @@ def alle_kennzahlen_auf_einmal(strk_bilanz: Bilanzklassen.Strukturbilanz):
     }
 
     for key, value in kennzahlen.items():
-        print(f"{key}: {value}")
+        print(f"{key}: {value:.3f}")
