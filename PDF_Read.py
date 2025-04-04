@@ -4,10 +4,26 @@ import Bilanzklassen # don't forget the class file :3
 
 # this was fun, so I did it myself, no cheating this time (stack overflow is fair game) :O
 class Bilanz_PDF:
-    def __init__(self, pdf_path:str, pdf_pages:tuple):
+    def __init__(self, pdf_path:str, pdf_pages:tuple=None):
         self.pdf_path = pdf_path
-        self.pdf_pages = pdf_pages
+
+        if pdf_pages == None:
+            self.pdf_pages = self.find_relevant_pages()
+        else:
+            self.pdf_pages = pdf_pages
+
         self.bilanz = Bilanzklassen.Bilanz()
+    
+    def find_relevant_pages(self):
+        reader = pypdf.PdfReader(self.pdf_path)
+
+        pages = []
+
+        for page_num in range(reader.get_num_pages()):
+            if "bilanz" in reader.pages[page_num].extract_text().lower():
+                pages.append(page_num)
+
+        return tuple(pages)
     
     def extract_text(self):
         reader = pypdf.PdfReader(self.pdf_path)
