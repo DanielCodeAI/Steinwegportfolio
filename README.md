@@ -32,6 +32,23 @@ Vollautomatisch erkannt und ausgewertet wird:
 - Nettoumlaufvermögen
 
 
+### Was hat gut funktioniert
+PDFs einlesen, hat fast auf anhieb gut funktioniert, und auch das Parsen vom Text lief gut nachdem wir uns konsequent auf eine Bilanzstruktur spezialisiert haben, anstatt zu versuchen alle möglichen Formatierungen einlesen zu können. Berechnen der Kennzahlen und hinzufügen einer "Ampel" bei den Kennzahlen, waren einfache Übungen.
+
+
+### Was hat Probleme bereitet
+Anfangs wollten wir mit OCR Arbeiten, jedoch ergaben sich dadurch viele kleine Schriebfehler, welche wiederrum das Parsing beinahe unmöglich gemacht haben. Nach viel rumprobieren mit höheren Bildauflösungen und anderem, haben wir uns irgendwann zu direkter PDF auslese entschieden, das die vorherigen Bilder für das OCR sowieso schon aus PDFs entnommen wurden. Durch das direkte Auslesen vom text selbst wurden damit lese-fehler durch OCR komplett umgangen.
+
+Vor allem die Formatierung der Bilanzen in den verschiedenen verwendeten berichten, hat sich von Brache zu Branche stark verändert. Das hat dafür gesorgt dass das parsen vom Text viele Sonderfälle abfangen musste, und dadurch schnell unübersichtlich wurde. Zudem hat es nicht lange gedauert bis besagte besonderheiten einer Bilanz, und die dazugehörigen Parsingmethoden, den Methoden für eine andere Bilanz direkt wiedersprochen haben.\
+Deshalb haben wir entschieden, uns nur auf Gastrounternehmen zu spezifizieren, das die Bilanzen in diesen oft einem einfacher einlesbaren Schema folgen.
+
+
+### Potentielle Verbesserungen
+- Möglichkeit zur betrachtung eines Unternehmens über einen Zeitraum, durch einlesen mehrerer Zeitlich aufeinander abfolgenden Bilanzen
+- Eine Vergleichsfunktion, die nochmal direkter Werte nebeneinanderstellt
+- Ein Dashboard, oder zumindest eine schönere graphische Darstellung der Daten
+
+
 ## The Fox!
 ```
         /\/\    _
@@ -40,9 +57,3 @@ Vollautomatisch erkannt und ausgewertet wird:
         |/\|<__/
 ```
 *- Fox by Quirin*
-
-TODO:
-- "Ampel" für Kennzahlen (Einfach sinnvolle Werte Goglen)
-- Zeitvergleich aka. Jahr in UI einfügen +mehrere PDFs von dem selben Betrieb, aber in anderen Jahren
-- Comparison between two > RPG equipment comparison
-- NICE LOOKING UI - MMMMMMMMM TASTY DASHBOARD
