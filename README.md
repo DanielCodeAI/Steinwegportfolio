@@ -1,6 +1,7 @@
 # Steinweg-Portfolios
 Tim Schacht, Daniel Bonath, Quirin Barth
 
+[Hier ist das Erklär-Video: https://youtu.be/inkn4Th2x5E](https://youtu.be/inkn4Th2x5E)
 
 ## REQUIREMENTS
 
